@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://csse.usc.edu"
+           xmlns="http://csse.usc.edu">
+    <xs:element name="COINCOMOCalibration" type="COINCOMOCalibrationType"/>
+    <xs:complexType name="COINCOMOCalibrationType">
+        <xs:sequence>
+            <xs:element name="CalibrationMode" type="CalibrationModeType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="System" type="SystemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="version" type="versionType"/>
+    </xs:complexType>
+    <xs:simpleType name="CalibrationModeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="COEFFICIENTS_ONLY"/>
+            <xs:enumeration value="COEFFICIENTS_AND_EXPONENTS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SystemType">
+        <xs:complexContent>
+            <xs:extension base="COINCOMOUnitType">
+                <xs:sequence>
+                    <xs:element name="SubSystem" type="SubSystemType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SubSystemType">
+        <xs:complexContent>
+            <xs:extension base="COINCOMOUnitType">
+                <xs:sequence>
+                    <xs:element name="_ZoomLevel" type="positiveIntegerOneHundred"/>
+                    <xs:element name="Component" type="ComponentType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ComponentType">
+        <xs:complexContent>
+            <xs:extension base="COINCOMOAdvancedUnitType">
+                <xs:sequence>
+                    <xs:element name="ParametersSettings" type="ParametersType"/>
+                    <xs:element name="ScaleFactor" type="positiveDouble"/>
+                    <xs:element name="ScaleFactorsSettings" type="ScaleFactorsSettingsType"/>
+                    <xs:element name="ScheduleFactor" type="positiveDouble"/>
+                    <xs:element name="SchedulePercentFactor" type="positiveDouble"/>
+                    <xs:element name="ScheduleSettings" type="ScheduleSettingsType"/>
+                    <xs:element name="COPSEMO" type="COPSEMOSettingsType"/>
+                    <xs:element name="_MultiBuildShift" type="positiveInteger"/>
+                    <xs:element name="SubComponent" type="SubComponentType" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="Visible" type="xs:boolean"/>
+                    <xs:element name="_Selected" type="xs:boolean"/>
+                    <xs:element name="EffectiveEAF" type="positiveDouble"/>
+                    <xs:element name="Date" type="xs:dateTime"/>
+                    <xs:element name="_ActualEffort" type="positiveDouble"/>
+                    <xs:element name="_ActualSchedule" type="positiveDouble"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SubComponentType">
+        <xs:complexContent>
+            <xs:extension base="COINCOMOAdvancedUnitType">
+                <xs:sequence>
+                    <xs:element name="NominalEffort" type="positiveDouble"/>
+                    <xs:element name="EstimatedEffort" type="positiveDouble"/>
+                    <xs:element name="SLOCWithoutREVL" type="commaInteger"/>
+                    <xs:element name="_LaborRate" type="positiveDecimal"/>
+                    <xs:element name="_Language" type="xs:string"/>
+                    <xs:element name="EAF" type="positiveDouble"/>
+                    <xs:element name="EAFSettings" type="EAFSettingsType"/>
+                    <xs:element name="_Breakage" type="positiveDecimal"/>
+                    <xs:element name="New">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="_NewSLOC" type="commaInteger"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="FunctionPoints">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="_Multiplier" type="positiveInteger"/>
+                                <xs:element name="_RatioType" type="xs:string"/>
+                                <xs:element name="_CalculationMethod" type="xs:string"/>
+                                <xs:element name="FunctionTypes">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="_InternalLogicalFiles" type="FunctionType"/>
+                                            <xs:element name="_ExternalInterfaceFiles" type="FunctionType"/>
+                                            <xs:element name="_ExternalInputs" type="FunctionType"/>
+                                            <xs:element name="_ExternalOutputs" type="FunctionType"/>
+                                            <xs:element name="_ExternalInquiries" type="FunctionType"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="TotalUnadjustedFunctionPoints" type="positiveInteger"/>
+                                <xs:element name="EquivalentSLOC" type="commaInteger"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AdaptationAndReuse" type="AdaptationAndReuseType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AdaptationAndReuseType">
+        <xs:complexContent>
+            <xs:extension base="BaseUnitType">
+                <xs:sequence>
+                    <xs:element name="_AdaptedSLOC" type="commaInteger"/>
+                    <xs:element name="_DesignModified" type="positiveDecimal"/>
+                    <xs:element name="_CodeModified" type="positiveDecimal"/>
+                    <xs:element name="_IntegrationModified" type="positiveDecimal"/>
+                    <xs:element name="_SoftwareUnderstanding" type="positiveDecimal"/>
+                    <xs:element name="_AssessmentAndAssimilation" type="positiveDecimal"/>
+                    <xs:element name="_UnfamiliarityWithSoftware" type="positiveDecimal"/>
+                    <xs:element name="_AutomaticallyTranslated" type="positiveDecimal"/>
+                    <xs:element name="_AutomaticTranslationProductivity" type="positiveDecimal"/>
+                    <xs:element name="AdaptationAdjustmentFactor" type="positiveDecimal"/>
+                    <xs:element name="EquivalentSLOC" type="commaInteger"/>
+                </xs:sequence>
+            </xs:extension>
+            </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="versionType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d+\.\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="commaInteger">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,3}([,]\d{3})*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveInteger">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveIntegerOneHundred">
+        <xs:restriction base="positiveInteger">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveDecimal">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveDecimal2SignificantDigit">
+        <xs:restriction base="positiveDecimal">
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveDecimal2SignificantDigitOneHundred">
+        <xs:restriction base="positiveDecimal">
+            <xs:fractionDigits value="2"/>
+            <xs:maxInclusive value="100.00"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveFraction2SignificantDigit">
+        <xs:restriction base="positiveDecimal">
+            <xs:fractionDigits value="2"/>
+            <xs:maxInclusive value="1.00"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveDouble">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="BaseUnitType">
+        <xs:sequence>
+            <xs:element name="ID" type="positiveInteger"/>
+            <xs:element name="DatabaseID" type="positiveInteger" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="_Name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="COINCOMOUnitType">
+        <xs:complexContent>
+            <xs:extension base="BaseUnitType">
+                <xs:sequence>
+                    <xs:element name="SLOC" type="commaInteger"/>
+                    <xs:element name="Cost" type="positiveDouble"/>
+                    <xs:element name="Staff" type="positiveDouble"/>
+                    <xs:element name="Effort" type="positiveDouble"/>
+                    <xs:element name="Schedule" type="positiveDouble"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="COINCOMOAdvancedUnitType">
+        <xs:complexContent>
+            <xs:extension base="COINCOMOUnitType">
+                <xs:sequence>
+                    <xs:element name="Productivity" type="positiveDouble"/>
+                    <xs:element name="InstructionCost" type="positiveDouble"/>
+                    <xs:element name="Risk" type="positiveDouble"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CostDriverParameterType">
+        <xs:sequence>
+            <xs:element name="_VLO" type="positiveDecimal"/>
+            <xs:element name="_LO" type="positiveDecimal"/>
+            <xs:element name="_NOM" type="positiveDecimal"/>
+            <xs:element name="_HI" type="positiveDecimal"/>
+            <xs:element name="_VHI" type="positiveDecimal"/>
+            <xs:element name="_XHI" type="positiveDecimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FunctionParameterType">
+        <xs:sequence>
+            <xs:element name="_Low" type="positiveInteger"/>
+            <xs:element name="_Average" type="positiveInteger"/>
+            <xs:element name="_High" type="positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CostDriverType">
+        <xs:sequence>
+            <xs:element name="_Rating" type="xs:string"/>
+            <xs:element name="_Increment" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FunctionType">
+        <xs:sequence>
+            <xs:element name="_Low" type="positiveInteger"/>
+            <xs:element name="_Average" type="positiveInteger"/>
+            <xs:element name="_High" type="positiveInteger"/>
+            <xs:element name="SubTotal" type="positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="COPSEMOType">
+        <xs:sequence>
+            <xs:element name="_EffortPercentage" type="positiveDecimal2SignificantDigitOneHundred"/>
+            <xs:element name="_SchedulePercentage" type="positiveDecimal2SignificantDigitOneHundred"/>
+            <xs:element name="Effort" type="positiveDouble"/>
+            <xs:element name="Month" type="positiveDouble"/>
+            <xs:element name="Personnel" type="positiveDouble"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ParametersType">
+        <xs:sequence>
+            <xs:element name="EffortAdjustmentFactors">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="_RELY" type="CostDriverParameterType"/>
+                        <xs:element name="_DATA" type="CostDriverParameterType"/>
+                        <xs:element name="_DOCU" type="CostDriverParameterType"/>
+                        <xs:element name="_CPLX" type="CostDriverParameterType"/>
+                        <xs:element name="_RUSE" type="CostDriverParameterType"/>
+                        <xs:element name="_TIME" type="CostDriverParameterType"/>
+                        <xs:element name="_STOR" type="CostDriverParameterType"/>
+                        <xs:element name="_PVOL" type="CostDriverParameterType"/>
+                        <xs:element name="_ACAP" type="CostDriverParameterType"/>
+                        <xs:element name="_APEX" type="CostDriverParameterType"/>
+                        <xs:element name="_PCAP" type="CostDriverParameterType"/>
+                        <xs:element name="_PLEX" type="CostDriverParameterType"/>
+                        <xs:element name="_LTEX" type="CostDriverParameterType"/>
+                        <xs:element name="_PCON" type="CostDriverParameterType"/>
+                        <xs:element name="_TOOL" type="CostDriverParameterType"/>
+                        <xs:element name="_SITE" type="CostDriverParameterType"/>
+                        <xs:element name="_USR1" type="CostDriverParameterType"/>
+                        <xs:element name="_USR2" type="CostDriverParameterType"/>
+                        <xs:element name="_SCED" type="CostDriverParameterType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ScaleFactors">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="_PREC" type="CostDriverParameterType"/>
+                        <xs:element name="_FLEX" type="CostDriverParameterType"/>
+                        <xs:element name="_RESL" type="CostDriverParameterType"/>
+                        <xs:element name="_TEAM" type="CostDriverParameterType"/>
+                        <xs:element name="_PMAT" type="CostDriverParameterType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="EquationEditor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="_EffortEstimationParameterA" type="positiveDecimal"/>
+                        <xs:element name="_ExponentParameterB" type="positiveDecimal"/>
+                        <xs:element name="_ScheduleEstimationParameterC" type="positiveDecimal"/>
+                        <xs:element name="_ScheduleEstimationParameterD" type="positiveDecimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FunctionPoints">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="_InternalLogicalFiles" type="FunctionParameterType"/>
+                        <xs:element name="_ExternalInterfaceFiles" type="FunctionParameterType"/>
+                        <xs:element name="_ExternalInputs" type="FunctionParameterType"/>
+                        <xs:element name="_ExternalOutputs" type="FunctionParameterType"/>
+                        <xs:element name="_ExternalInquiries" type="FunctionParameterType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PersonMonth">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="_HoursPerPM" type="positiveDecimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ScaleFactorsSettingsType">
+        <xs:sequence>
+            <xs:element name="_PREC" type="CostDriverType"/>
+            <xs:element name="_FLEX" type="CostDriverType"/>
+            <xs:element name="_RESL" type="CostDriverType"/>
+            <xs:element name="_TEAM" type="CostDriverType"/>
+            <xs:element name="_PMAT" type="CostDriverType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ScheduleSettingsType">
+        <xs:sequence>
+            <xs:element name="_SCED" type="CostDriverType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EAFSettingsType">
+        <xs:sequence>
+            <xs:element name="_RELY" type="CostDriverType"/>
+            <xs:element name="_DATA" type="CostDriverType"/>
+            <xs:element name="_DOCU" type="CostDriverType"/>
+            <xs:element name="_CPLX" type="CostDriverType"/>
+            <xs:element name="_RUSE" type="CostDriverType"/>
+            <xs:element name="_TIME" type="CostDriverType"/>
+            <xs:element name="_STOR" type="CostDriverType"/>
+            <xs:element name="_PVOL" type="CostDriverType"/>
+            <xs:element name="_ACAP" type="CostDriverType"/>
+            <xs:element name="_APEX" type="CostDriverType"/>
+            <xs:element name="_PCAP" type="CostDriverType"/>
+            <xs:element name="_PLEX" type="CostDriverType"/>
+            <xs:element name="_LTEX" type="CostDriverType"/>
+            <xs:element name="_PCON" type="CostDriverType"/>
+            <xs:element name="_TOOL" type="CostDriverType"/>
+            <xs:element name="_SITE" type="CostDriverType"/>
+            <xs:element name="_USR1" type="CostDriverType"/>
+            <xs:element name="_USR2" type="CostDriverType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="COPSEMOSettingsType">
+        <xs:sequence>
+            <xs:element name="_Inception" type="COPSEMOType"/>
+            <xs:element name="_Elaboration" type="COPSEMOType"/>
+            <xs:element name="_Construction" type="COPSEMOType"/>
+            <xs:element name="_Transition" type="COPSEMOType"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

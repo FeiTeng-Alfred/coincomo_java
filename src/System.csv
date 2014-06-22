@@ -1,0 +1,107 @@
+COINCOMO
+
+System
+ID , Name , SLOC , Cost , Staff
+0 , System , 14548 , 331910.84338812093 , 4.8
+
+ , SubSystem
+ , ID , Name , SLOC , Cost , Staff
+ , 0 , SS1 , 12048 , 331910.84338812093 , 3.7
+
+ , , Component
+ , , ID , Name , SLOC , Scale Factors , SCED , SCED% , Cost , Staff , Effort , InstCost , PROD , Schedule, Hours/PM
+ , , 0 , C1 , 12048 , 18.97 , 1.0 , 100.0 , 331910.84338812093 , 3.7 , 45.39724634039553 , 27.549040785866612 , 265.39054615035997 , 12.345310767738757 , 152.0
+ , , Inception
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 2.723834780423732 , 1.2479188277874347 , 2.182701887151669 , 6.0 , 12.5
+ , , Elaboration
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 10.895339121694928 , 3.7437564833623043 , 2.9102691828688916 , 24.0 , 37.5
+ , , Construction
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 34.5019072187006 , 6.239594138937174 , 5.529511447450893 , 76.0 , 62.5
+ , , Transition
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 5.447669560847464 , 1.2479188277874347 , 4.365403774303338 , 12.0 , 12.5
+
+ , , , SubComponent
+ , , , ID , Name , Language , SLOC , Labor Rate , EAF , NomEffort , EstEffort , PROD , Cost , Inst Cost , Staff , RISK
+ , , , 0 , SC1 , C++ , 9548 , 7000.0 , 1.0 , 35.97716700349407 , 35.97716700349407 , 265.39054615035997 , 251840.16902445848 , 26.376222143324096 , 2.9 , 0.0
+
+, , , , Size , REVL , Language , Total SLOC (no REVL)
+, , , , ,10.0 , C++ , 8680
+
+, , , , , New , SLOC
+, , , , , , 5000
+
+, , , , , Function Points , Ratio Type , Multiplier , Calculation Method , Inputs , Outputs , Files , Interfaces , Queries , Total Unadjusted Function Points , Equivalent SLOC
+, , , , , ,Jones , 53 , Using Table , 0 , 0 , 0 , 0 , 0 , 0 , 0
+
+, , , , , AdaptationAndReuse
+, , , , , ID , Name, InitialSLOC, DesignModified, CodeModified, IntegrationModified, SoftwareUnderstanding, AssessmentAssimilation , Unfamiliarity, AutomaticallyTranslated, AutoTranslationProductivity, ASLOC
+, , , , , 0 , AAR1 , 10000 , 0.0 , 0.0 , 0.0 , 30.0 , 4.0 , 0.4 , 0.0 , 2400.0 , 400
+, , , , , 1 , AAR2 , 20000 , 10.0 , 10.0 , 10.0 , 30.0 , 4.0 , 0.4 , 0.0 , 2400.0 , 3280
+
+ , , , 1 , SC2 , C , 2500 , 8500.0 , 1.0 , 9.420079336901464 , 9.420079336901464 , 265.3905461503599 , 80070.67436366245 , 32.028269745464975 , 0.8 , 0.0
+
+, , , , Size , REVL , Language , Total SLOC (no REVL)
+, , , , ,25.0 , C , 2000
+
+, , , , , New , SLOC
+, , , , , , 2000
+
+, , , , , Function Points , Ratio Type , Multiplier , Calculation Method , Inputs , Outputs , Files , Interfaces , Queries , Total Unadjusted Function Points , Equivalent SLOC
+, , , , , ,Jones , 128 , Using Table , 0 , 0 , 0 , 0 , 0 , 0 , 0
+
+
+ , , 1 , C2 , 0 , 18.97 , 1.0 , 100.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 152.0
+ , , Inception
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.0 , 0.0 , 0.0 , 6.0 , 12.5
+ , , Elaboration
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.0 , 0.0 , 0.0 , 24.0 , 37.5
+ , , Construction
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.0 , 0.0 , 0.0 , 76.0 , 62.5
+ , , Transition
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.0 , 0.0 , 0.0 , 12.0 , 12.5
+
+
+ , 1 , SS2 , 2500 , 0.0 , 1.1
+
+ , , Component
+ , , ID , Name , SLOC , Scale Factors , SCED , SCED% , Cost , Staff , Effort , InstCost , PROD , Schedule, Hours/PM
+ , , 0 , C3 , 2500 , 18.97 , 1.0 , 100.0 , 0.0 , 1.1 , 8.05307897115883 , 0.0 , 310.4402687411188 , 7.123732599355033 , 152.0
+ , , Inception
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.4831847382695298 , 0.3547243421649503 , 1.362141473913409 , 6.0 , 12.5
+ , , Elaboration
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 1.9327389530781192 , 1.064173026494851 , 1.816188631884545 , 24.0 , 37.5
+ , , Construction
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 6.120340018080712 , 1.7736217108247516 , 3.450758400580636 , 76.0 , 62.5
+ , , Transition
+ , , Effort , Month , Personnel , EffortPercentage , SchedulePercentage
+ , , 0.9663694765390596 , 0.3547243421649503 , 2.724282947826818 , 12.0 , 12.5
+
+ , , , SubComponent
+ , , , ID , Name , Language , SLOC , Labor Rate , EAF , NomEffort , EstEffort , PROD , Cost , Inst Cost , Staff , RISK
+ , , , 0 , SC4 , C , 2500 , 0.0 , 1.0 , 8.05307897115883 , 8.05307897115883 , 310.4402687411188 , 0.0 , 0.0 , 1.1 , 0.0
+
+, , , , Size , REVL , Language , Total SLOC (no REVL)
+, , , , ,0.0 , C , 2500
+
+, , , , , New , SLOC
+, , , , , , 2500
+
+, , , , , Function Points , Ratio Type , Multiplier , Calculation Method , Inputs , Outputs , Files , Interfaces , Queries , Total Unadjusted Function Points , Equivalent SLOC
+, , , , , ,Jones , 128 , Using Table , 0 , 0 , 0 , 0 , 0 , 0 , 0
+
+
+
+ , 2 , SS3 , 0 , 0.0 , 0.0
+
+
